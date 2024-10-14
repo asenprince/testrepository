@@ -1,44 +1,62 @@
-{ "processors": [
-  {
-    "dissect": {
-      "field": "message",
-      "pattern": "<Event><System><Provider Name=\"Linux-Sysmon\" Guid=\"{ff032593-a8d3-4f13-b0d6-01fc615a0f97}\"/><EventID>%{event.id}</EventID>",
-      "description": "Extract Sysmon System Data"
-    }
-  },
-  {
-    "dissect": {
-      "field": "message",
-      "pattern": "<Event><System><Provider Name=\"Linux-Sysmon\" Guid=\"{ff032593-a8d3-4f13-b0d6-01fc615a0f97}\"/><EventID>1</EventID><Version>%{event.version}</Version><Level>%{event.level}</Level><Task>%{event.task}</Task><Opcode>%{event.opcode}</Opcode><Keywords>%{event.keywords}</Keywords><TimeCreated SystemTime=\"%{event.systemtime}\"/><EventRecordID>%{event.recordid}</EventRecordID><Correlation/><Execution ProcessID=\"%{event.corrpid}\" ThreadID=\"%{event.threadid}\"/><Channel>Linux-Sysmon/Operational</Channel><Computer>%{event.computer}</Computer><Security UserId=\"%{event.uid}\"/></System><EventData><Data Name=\"RuleName\">%{event.rulename}</Data><Data Name=\"UtcTime\">%{event.utctime}</Data><Data Name=\"ProcessGuid\">{%{event.pguid}}</Data><Data Name=\"ProcessId\">%{event.pid}</Data><Data Name=\"Image\">%{event.image}</Data><Data Name=\"FileVersion\">%{event.fileversion}</Data><Data Name=\"Description\">%{event.description}</Data><Data Name=\"Product\">%{event.product}</Data><Data Name=\"Company\">%{event.company}</Data><Data Name=\"OriginalFileName\">%{event.originalfilename}</Data><Data Name=\"CommandLine\">%{event.commandline}</Data><Data Name=\"CurrentDirectory\">%{event.currentdirectory}</Data><Data Name=\"User\">%{event.user}</Data><Data Name=\"LogonGuid\">{%{event.logonguid}}</Data><Data Name=\"LogonId\">%{event.logonid}</Data><Data Name=\"TerminalSessionId\">%{event.terminalsessionid}</Data><Data Name=\"IntegrityLevel\">%{event.integritylevel}</Data><Data Name=\"Hashes\">%{event.hashes}</Data><Data Name=\"ParentProcessGuid\">{%{event.parentguid}}</Data><Data Name=\"ParentProcessId\">%{event.parentpid}</Data><Data Name=\"ParentImage\">%{event.parentimage}</Data><Data Name=\"ParentCommandLine\">%{event.parentcommandline}</Data><Data Name=\"ParentUser\">%{event.parentuser}</Data></EventData></Event>",
-      "if": "ctx?.event?.id",
-      "description": "Sysmon Event ID 1"
-    }
-  },
-  {
-    "dissect": {
-      "field": "message",
-      "pattern": "<Event><System><Provider Name=\"Linux-Sysmon\" Guid=\"{ff032593-a8d3-4f13-b0d6-01fc615a0f97}\"/><EventID>3</EventID><Version>%{event.version}</Version><Level>%{event.level}</Level><Task>%{event.task}</Task><Opcode>%{event.opcode}</Opcode><Keywords>%{event.keywords}</Keywords><TimeCreated SystemTime=\"%{event.systemtime}\"/><EventRecordID>%{event.recordid}</EventRecordID><Correlation/><Execution ProcessID=\"%{event.corrpid}\" ThreadID=\"%{event.threadid}\"/><Channel>Linux-Sysmon/Operational</Channel><Computer>%{event.computer}</Computer><Security UserId=\"%{event.uid}\"/></System><EventData><Data Name=\"RuleName\">%{event.rulename}</Data><Data Name=\"UtcTime\">%{event.utctime}</Data><Data Name=\"ProcessGuid\">{%{event.pguid}}</Data><Data Name=\"ProcessId\">%{event.pid}</Data><Data Name=\"Image\">%{event.image}</Data><Data Name=\"User\">%{event.user}</Data><Data Name=\"Protocol\">%{event.protocol}</Data><Data Name=\"Initiated\">%{event.initiated}</Data><Data Name=\"SourceIsIpv6\">%{event.srcisipv6}</Data><Data Name=\"SourceIp\">%{event.srcip}</Data><Data Name=\"SourceHostname\">%{event.srchost}</Data><Data Name=\"SourcePort\">%{event.srcport}</Data><Data Name=\"SourcePortName\">%{event.srcportname}</Data><Data Name=\"DestinationIsIpv6\">%{event.destisipv6}</Data><Data Name=\"DestinationIp\">%{event.destip}</Data><Data Name=\"DestinationHostname\">%{event.desthost}</Data><Data Name=\"DestinationPort\">%{event.destport}</Data><Data Name=\"DestinationPortName\">%{event.destportname}</Data></EventData></Event>",
-      "if": "ctx?.event?.id",
-      "description": "Sysmon Event ID 3"
-    }
-  },
-  {
-    "dissect": {
-      "field": "message",
-      "pattern": "<Event><System><Provider Name=\"Linux-Sysmon\" Guid=\"{ff032593-a8d3-4f13-b0d6-01fc615a0f97}\"/><EventID>5</EventID><Version>%{event.version}</Version><Level>%{event.level}</Level><Task>%{event.task}</Task><Opcode>%{event.opcode}</Opcode><Keywords>%{event.keywords}</Keywords><TimeCreated SystemTime=\"%{event.systemtime}\"/><EventRecordID>%{event.recordid}</EventRecordID><Correlation/><Execution ProcessID=\"%{event.corrpid}\" ThreadID=\"%{event.threadid}\"/><Channel>Linux-Sysmon/Operational</Channel><Computer>%{event.computer}</Computer><Security UserId=\"%{event.uid}\"/></System><EventData><Data Name=\"RuleName\">%{event.rulename}</Data><Data Name=\"UtcTime\">%{event.utctime}</Data><Data Name=\"ProcessGuid\">{%{event.pguid}}</Data><Data Name=\"ProcessId\">%{event.pid}</Data><Data Name=\"Image\">%{event.image}</Data><Data Name=\"User\">%{event.user}</Data></EventData></Event>",
-      "if": "ctx?.event?.id",
-      "description": "Sysmon Event ID 5"
-    }
-  },
-  {
-    "dissect": {
-      "field": "message",
-      "pattern": "<Event><System><Provider Name=\"Linux-Sysmon\" Guid=\"{ff032593-a8d3-4f13-b0d6-01fc615a0f97}\"/><EventID>11</EventID><Version>%{event.version}</Version><Level>%{event.level}</Level><Task>%{event.task}</Task><Opcode>%{event.opcode}</Opcode><Keywords>%{event.keywords}</Keywords><TimeCreated SystemTime=\"%{event.systemtime}\"/><EventRecordID>%{event.recordid}</EventRecordID><Correlation/><Execution ProcessID=\"%{event.corrpid}\" ThreadID=\"%{event.threadid}\"/><Channel>Linux-Sysmon/Operational</Channel><Computer>%{event.computer}</Computer><Security UserId=\"%{event.uid}\"/></System><EventData><Data Name=\"RuleName\">%{event.rulename}</Data><Data Name=\"UtcTime\">%{event.utctime}</Data><Data Name=\"ProcessGuid\">{%{event.pguid}}</Data><Data Name=\"ProcessId\">%{event.pid}</Data><Data Name=\"Image\">%{event.image}</Data><Data Name=\"TargetFilename\">%{event.targetfilename}</Data><Data Name=\"CreationUtcTime\">%{event.creationutctime}</Data><Data Name=\"User\">%{event.user}</Data></EventData></Event>",
-      "if": "ctx?.event?.id",
-      "description": "Sysmon Event ID 11"
-    }
-  },
-  {
-    "dissect": {
-      "field": "message",
-      "pattern": "<Event><System><Provider Name=\"Linux-Sysmon\" Guid=\"{ff032593-a8d3-4f13-b0d6-01fc615a0f97}\"/><EventID>23</EventID><Version>%{event.version}</Version><Level>%{event.level}</Level><Task>%{event.task}</Task><Opcode>%{event.
+{
+  "processors": [
+    {
+      "grok": {
+        "field": "message",
+        "patterns": [
+          "<Event><System><Provider Name=\"Linux-Sysmon\" Guid=\"{[a-fA-F0-9-]+}\"/><EventID>%{NUMBER:event.id}</EventID><Version>%{NUMBER:event.version}</Version><Level>%{NUMBER:event.level}</Level><Task>%{NUMBER:event.task}</Task><Opcode>%{NUMBER:event.opcode}</Opcode><Keywords>%{DATA:event.keywords}</Keywords><TimeCreated SystemTime=\"%{TIMESTAMP_ISO8601:event.systemtime}\"/><EventRecordID>%{NUMBER:event.recordid}</EventRecordID><Execution ProcessID=\"%{NUMBER:event.corrpid}\" ThreadID=\"%{NUMBER:event.threadid}\"/><Channel>%{DATA:event.channel}</Channel><Computer>%{DATA:event.computer}</Computer><Security UserId=\"%{DATA:event.uid}\"/></System><EventData>(.*)</EventData></Event>"
+        ]
+      }
+    },
+    {
+      "grok": {
+        "field": "message",
+        "patterns": [
+          "<Data Name=\"RuleName\">%{DATA:event.rulename}</Data><Data Name=\"UtcTime\">%{TIMESTAMP_ISO8601:event.utctime}</Data><Data Name=\"ProcessGuid\">%{UUID:event.pguid}</Data><Data Name=\"ProcessId\">%{NUMBER:event.pid}</Data><Data Name=\"Image\">%{DATA:event.image}</Data>"
+        ],
+        "if": "ctx?.event?.id == '1'",
+        "description": "Sysmon Event ID 1"
+      }
+    },
+    {
+      "grok": {
+        "field": "message",
+        "patterns": [
+          "<Data Name=\"SourceIp\">%{IP:event.srcip}</Data><Data Name=\"DestinationIp\">%{IP:event.destip}</Data><Data Name=\"SourcePort\">%{NUMBER:event.srcport}</Data><Data Name=\"DestinationPort\">%{NUMBER:event.destport}</Data>"
+        ],
+        "if": "ctx?.event?.id == '3'",
+        "description": "Sysmon Event ID 3"
+      }
+    },
+    {
+      "grok": {
+        "field": "message",
+        "patterns": [
+          "<Data Name=\"TargetFilename\">%{DATA:event.targetfilename}</Data><Data Name=\"CreationUtcTime\">%{TIMESTAMP_ISO8601:event.creationutctime}</Data><Data Name=\"Hashes\">%{DATA:event.hashes}</Data>"
+        ],
+        "if": "ctx?.event?.id == '11'",
+        "description": "Sysmon Event ID 11"
+      }
+    },
+    {
+      "grok": {
+        "field": "message",
+        "patterns": [
+          "<Data Name=\"ProcessGuid\">%{UUID:event.pguid}</Data><Data Name=\"ProcessId\">%{NUMBER:event.pid}</Data><Data Name=\"Image\">%{DATA:event.image}</Data><Data Name=\"User\">%{DATA:event.user}</Data>"
+        ],
+        "if": "ctx?.event?.id == '5'",
+        "description": "Sysmon Event ID 5"
+      }
+    },
+    {
+      "grok": {
+        "field": "message",
+        "patterns": [
+          "<Data Name=\"Image\">%{DATA:event.image}</Data><Data Name=\"TargetFilename\">%{DATA:event.targetfilename}</Data><Data Name=\"Hashes\">%{DATA:event.hashes}</Data><Data Name=\"IsExecutable\">%{DATA:event.isexecutable}</Data><Data Name=\"Archived\">%{DATA:event.archived}</Data>"
+        ],
+        "if": "ctx?.event?.id == '23'",
+        "description": "Sysmon Event ID 23"
+      }
+    }
+  ]
+}
