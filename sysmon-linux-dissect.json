@@ -1,7 +1,8 @@
 { "processors": [
   {
     "dissect": {
-      "field": "message","pattern": "<Event><System><Provider Name=\"Linux-Sysmon\" Guid=\"{ff032593-a8d3-4f13-b0d6-01fc615a0f97}\"/><EventID>%{event.id}</EventID>",
+      "field": "message",
+      "pattern": "<Event><System><Provider Name=\"Linux-Sysmon\" Guid=\"{ff032593-a8d3-4f13-b0d6-01fc615a0f97}\"/><EventID>%{event.id}</EventID>",
       "description": "Extract Sysmon System Data"
     }
   },
